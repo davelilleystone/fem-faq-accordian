@@ -1,0 +1,141 @@
+@function px-to-rem($val) {
+  $remValue: calc($val/16) + rem;
+  @return $remValue;
+}
+
+// variables
+
+//colours
+
+$clr-white: hsl(0, 0%, 100%);
+$clr-light-pink: hsl(275, 100%, 97%);
+$clr-grayish-purple: hsl(292, 16%, 49%);
+$clr-dark-purple: hsl(292, 42%, 14%);
+$clr-electric-violet: hsl(281, 83%, 54%);
+
+// typography
+
+$font-sans-serif: "Work Sans", sans-serif;
+
+$font-weight-normal: 400;
+$font-weight-semi-bold: 600;
+$font-weight-bold: 700;
+
+$font-fs-text-block: px-to-rem(14);
+$font-fs-heading: 1rem;
+$font-fs-heading-lg: 2rem;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: $font-sans-serif;
+  background-color: $clr-light-pink;
+  background-image: url(../assets/images/background-pattern-mobile.svg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+
+  @media (min-width: px-to-rem(768)) {
+    background-image: url(../assets/images/background-pattern-desktop.svg);
+  }
+}
+
+h1,
+h2 {
+  color: $clr-dark-purple;
+}
+
+.content-wrapper {
+  background-color: $clr-white;
+  max-width: px-to-rem(600);
+  margin-inline: 1.5rem;
+  padding-inline: 1.5rem;
+  padding-block: 1.5rem;
+  box-shadow: 0px 2rem 4.5rem rgba(80, 0, 118, 0.1);
+  border-radius: 0.5rem;
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  column-gap: 1.5rem;
+
+  h1 {
+    font-size: $font-fs-heading-lg;
+  }
+}
+
+.accordian {
+  &__item {
+    display: grid;
+    grid-template-rows: auto 0fr;
+    transition: all 0.3s ease-in-out;
+    padding-block-start: 1.5rem;
+
+    &:not(:last-child) {
+      padding-block-end: 1.5rem;
+    }
+
+    &:not(:first-child) {
+      border-top: 1px solid $clr-light-pink;
+    }
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 1.5rem;
+
+    h2 {
+      font-size: $font-fs-heading;
+      font-weight: $font-weight-semi-bold;
+      flex: 1;
+
+      @media (hover: hover) {
+        &:hover {
+          color: $clr-electric-violet;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  &__button {
+    width: px-to-rem(30);
+    height: px-to-rem(30);
+    background-image: url(../assets/images/icon-plus.svg);
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border: none;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__item--expanded {
+    grid-template-rows: auto 1fr;
+  }
+
+  &__item--expanded &__button {
+    background-image: url(../assets/images/icon-minus.svg);
+  }
+
+  &__content {
+    color: $clr-grayish-purple;
+    line-height: 150%;
+    overflow: hidden;
+
+    p {
+      padding-block-start: 1.5rem;
+      font-size: $font-fs-text-block;
+    }
+  }
+}
