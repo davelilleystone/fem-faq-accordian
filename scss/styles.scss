@@ -54,11 +54,16 @@ h2 {
 .content-wrapper {
   background-color: $clr-white;
   max-width: px-to-rem(600);
-  margin-inline: 1.5rem;
   padding-inline: 1.5rem;
   padding-block: 1.5rem;
   box-shadow: 0px 2rem 4.5rem rgba(80, 0, 118, 0.1);
   border-radius: 0.5rem;
+
+  @media (min-width: px-to-rem(768)) {
+    padding-inline: 2.5rem;
+    padding-block: 2.5rem;
+    border-radius: 1rem;
+  }
 }
 
 .page-header {
@@ -68,6 +73,17 @@ h2 {
 
   h1 {
     font-size: $font-fs-heading-lg;
+
+    @media (min-width: px-to-rem(768)) {
+      font-size: 3.5rem;
+    }
+  }
+
+  img {
+    @media (min-width: px-to-rem(768)) {
+      height: px-to-rem(40);
+      width: px-to-rem(40);
+    }
   }
 }
 
@@ -104,6 +120,10 @@ h2 {
           cursor: pointer;
         }
       }
+
+      @media (min-width: px-to-rem(768)) {
+        font-size: px-to-rem(18);
+      }
     }
   }
 
@@ -136,6 +156,10 @@ h2 {
     p {
       padding-block-start: 1.5rem;
       font-size: $font-fs-text-block;
+
+      @media (min-width: px-to-rem(768)) {
+        font-size: 1rem;
+      }
     }
   }
 }
